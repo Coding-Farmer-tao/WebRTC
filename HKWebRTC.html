@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <script src="adapter.min.js"></script>
+  <script src="webrtcstreamer.js"></script>
+  <script>
+    var webRtcServer = null;
+    window.onload = function () {
+      webRtcServer = new WebRtcStreamer("video", "http://127.0.0.1:8000");
+      webRtcServer.connect("rtsp://admin:xd12345678@serotechai0.hsk.top:12610/1", null, "rtptransport=tcp&timeout=60");
+    }
+    window.onbeforeunload = function () { webRtcServer.disconnect(); }
+  </script>
+</head>
+
+<body class="body">
+  <video id="video"></video>
+</body>
+<style>
+  .body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  #video {
+    padding: 0;
+    width: 720px;
+    height: 400px;
+  }
+</style>
+
+</html>
